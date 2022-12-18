@@ -1,8 +1,8 @@
 import { nanoid } from 'nanoid';
 import React, { useState } from 'react';
-import { Filter } from '../components/Filter/Filter';
+// import { Filter } from '../components/Filter/Filter';
 import ContactForm from './ContactForm';
-import { ContactList } from './ContactList/ContactList';
+// import { ContactList } from './ContactList/ContactList';
 import { Container } from './App.styled';
 
 export default function App() {
@@ -10,23 +10,24 @@ export default function App() {
   const [filter, setFilter] = useState('');
 
   const addNewContact = ({ name, number, id }) => {
-    const newContact = { name, number, id: nanoid() };
+    const newContact = { name, number, id };
+    console.log(newContact);
 
-    contacts.find(contact => contact.name.toLowerCase() === name)
-      ? alert(`${name} is already in contacts.`)
-      : this.setState(({ contacts }) => ({
-          contacts: [...contacts, newContact],
-        }));
+    // contacts.find(contact => contact.name.toLowerCase() === name)
+    //   ? alert(`${name} is already in contacts.`)
+    //   : this.setState(({ contacts }) => ({
+    //       contacts: [...contacts, newContact],
+    //     }));
   };
   return (
     <Container>
       <h1>Phonebook</h1>
-      <ContactForm onSubmit={this.addNewContact} />
+      <ContactForm onSubmit={addNewContact} />
       <h2>Contacts</h2>
       <p>Find contacts by name</p>
 
-      <Filter value={filter} onChange={this.changeFilter} />
-      <ContactList contactList={visibleContacts} onDeleteBtn={this.deleteBtn} />
+      {/* <Filter value={filter} onChange={this.changeFilter} />
+      <ContactList contactList={visibleContacts} onDeleteBtn={this.deleteBtn} /> */}
     </Container>
   );
 }

@@ -24,10 +24,11 @@ export default function ContactForm({ onSubmit }) {
       name,
       number,
     });
-
-    event.currentTarget.reset();
-
-    // this.reset();
+    reset();
+  };
+  const reset = () => {
+    setName('');
+    setNumber('');
   };
 
   return (

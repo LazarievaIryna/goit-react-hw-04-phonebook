@@ -13,7 +13,7 @@ export default function App() {
     const newContact = { name, number, id };
     console.log(newContact);
 
-    contacts.find(contact => contact.name.toLowerCase() === name)
+    contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase())
       ? alert(`${name} is already in contacts.`)
       : setContacts(prevState => [...prevState, newContact]);
   };

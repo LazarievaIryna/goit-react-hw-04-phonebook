@@ -4,10 +4,17 @@ import { Filter } from '../components/Filter/Filter';
 import ContactForm from './ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Container } from './App.styled';
+import { useEffect } from 'react';
 
 export default function App() {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(
+    () => JSON.parse(window.localStorage.getItem('contacts')) ?? []
+  );
   const [filter, setFilter] = useState('');
+
+  useEffect(() => {
+    window.localStorage.setItem('contacts', JSON.stringify(contacts));
+  }, [contacts]);
 
   const addNewContact = ({ name, number, id }) => {
     const newContact = { name, number, id };
